@@ -76,9 +76,45 @@ public class myDataBase extends SQLiteOpenHelper {
                 }
             }
         }
-
         return result;
-
-
     }
+
+    public Cursor showData(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME,null);
+        return cursor;
+    }
+
+    public int update_data(String id, String name, String email, String phone){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_NAME,name);
+        contentValues.put(USER_EMAIL,email);
+        contentValues.put(USER_PHONE,phone);
+        int result = sqLiteDatabase.update(TABLE_NAME,contentValues,ID+"=?",new String[] {id});
+        return result;
+    }
+
+    public int delete_data(String id){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * FROM "+TABLE_NAME,null);
+        if (cursor.getCount()==0){
+            Toast.makeText(context,"No Data Found",Toast.LENGTH_SHORT).show();
+            int result = -1;
+            return result;
+        }else {
+            while (cursor.moveToNext()){
+                String id_value = cursor.getString(0);
+                if (id_value.equals(id)){
+                    break;
+                }
+            }
+        }
+        int result = sqLiteDatabase.delete(TABLE_NAME,ID+"=?",new String[] {id});
+        return  result;
+    }
+
+
+
+
 }

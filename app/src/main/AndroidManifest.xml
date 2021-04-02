@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CIURDApplication">
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Delete_Activity"></activity>
+        <activity android:name=".Delete_data" />
+        <activity android:name=".Update_data" />
+        <activity android:name=".All_users" />
+        <activity android:name=".Home" />
         <activity android:name=".sign_up" />
         <activity
             android:name=".MainActivity"

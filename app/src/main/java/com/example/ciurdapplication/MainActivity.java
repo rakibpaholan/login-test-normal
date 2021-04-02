@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         user_name = (EditText)findViewById(R.id.user_name_id);
         password = (EditText)findViewById(R.id.user_password_id);
 
+
         logIn = (Button)findViewById(R.id.login_button_id);
         signUp = (Button)findViewById(R.id.sign_up_id);
 
         logIn.setOnClickListener(this);
         signUp.setOnClickListener(this);
+
 
         myDataBase = new myDataBase(this);
         SQLiteDatabase sqLiteDatabase = myDataBase.getWritableDatabase();
@@ -54,5 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(),"You need to sign up",Toast.LENGTH_LONG).show();
             }
         }
+
     }
 }
